@@ -1,0 +1,14 @@
+<!Doctype HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>First Web Application</title>
+    </head>
+
+    <body>
+        <p th:text="'Welcome, ' + ${name} + '!'" />
+        <p><a href="/list-todos">Click here</a> to manage your todos</p>
+    </body>
+
+</html>

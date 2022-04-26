@@ -1,0 +1,40 @@
+<!Doctype HTML>
+
+<html xmlns:th="https://www.thymeleaf.org">
+
+    <head>
+        <div th:insert="common/header.html :: header"></div>
+    </head>
+
+    <body>
+    <div th:insert="common/navigation.html :: navigation"></div>
+        <div class="container">
+        <table class="table table-striped">
+            <caption>Your todos are</caption>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Target Date</th>
+                    <th>Is it Done?</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="todo : ${todos}">
+                    <td th:text="${todo.desc}"></td>
+                    <td th:text="${#dates.format(todo.targetDate, 'dd-MMM-yyyy')}"></td>
+                    <td th:text="${todo.done}"></td>
+                    <td><a type="button" class="btn btn-success" th:href="'/update-todo?id='+${todo.id}" th:text="'Update'"></a></td>
+                    <td><a type="button" class="btn btn-warning" th:href="'/delete-todo?id='+${todo.id}" th:text="'Delete'"></a></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div><a class="button" href="/add-todo">Add a Todo</a></div>
+
+            <div th:insert="common/footer.html :: footer"></div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,32 @@
+<!Doctype HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <div th:insert="common/header.html :: header"></div>
+</head>
+
+<body>
+    <div th:insert="common/navigation.html :: navigation"></div>
+        <div class="container">
+            <form th:object="${todo}" th:action="@{update-todo?} + ${id}" method="post">
+                <fieldset class="form-group">
+                    <label>Description</label>
+                    <input type="hidden" th:field="*{id}"/>
+                    <input type="text" th:field="*{desc}"
+                           class="form-control" required="required"/>
+                    <p th:errors="*{desc}" class="text-warning"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Target Date</label>
+                    <input type="hidden" th:field="*{id}"/>
+                    <input type="text" th:field="*{targetDate}"
+                           class="form-control" required="required"/>
+                    <p th:errors="*{targetDate}" class="text-warning"/>
+                </fieldset>
+                <button type="submit" class="btn btn-success">Update</button>
+            </form>
+        </div>
+    <div th:insert="common/footer.html :: footer"></div>
+</body>
+
+</html>
